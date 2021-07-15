@@ -72,9 +72,9 @@ function Login() {
             />
           </div>
           <div className="login-wrapper">
-            <div class="wrapper fadeInDown">
+            <div className="wrapper fadeInDown">
               <div id="formContent">
-                <div class="fadeIn first">
+                <div className="fadeIn first">
                   <img
                     src={logo}
                     id="icon"
@@ -87,14 +87,14 @@ function Login() {
                   <input
                     type="text"
                     id="email"
-                    class="fadeIn second"
+                    className="fadeIn second"
                     name="email"
                     placeholder="email@gmail.com"
                   />
                   <input
                     type="text"
                     id="password"
-                    class="fadeIn third"
+                    className="fadeIn third"
                     name="password"
                     placeholder="password"
                   />
@@ -102,7 +102,7 @@ function Login() {
                   <Link href="/admin/dashboard">
                     <input
                       type="submit"
-                      class="fadeIn fourth"
+                      className="fadeIn fourth"
                       style={{ marginTop: "20px" }}
                       // onClick={btnClicked}
                     />
@@ -110,7 +110,7 @@ function Login() {
                 </form>
 
                 <div id="formFooter">
-                  <a class="underlineHover " href="#">
+                  <a className="underlineHover " href="#">
                     Forgot Password?
                   </a>
                 </div>
