@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 
 import Link from "next/link";
+import Image from 'next/image'
 
 function Login() {
   // const btnClicked = () => {
@@ -75,7 +76,7 @@ function Login() {
             <div className="wrapper fadeInDown">
               <div id="formContent">
                 <div className="fadeIn first">
-                  <img
+                  <Image
                     src={logo}
                     id="icon"
                     alt="User Icon"
