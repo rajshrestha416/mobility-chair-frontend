@@ -4,6 +4,7 @@ import App from "next/app";
 import Head from "next/head";
 import "../assets/css/custom.css";
 
+import Script from 'next/script';
 // import "assets/plugins/nucleo/css/nucleo.css";
 // import "@fortawesome/fontawesome-free/css/all.min.css";
 // import "assets/scss/nextjs-argon-dashboard.scss";
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }) {
             href={require("assets/img/brand/favicon.ico")}
           /> */}
           <title>Mobility Wheelchair</title>
-          <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+          {/* <Script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE" async="true"></Script> */}
         </Head>
         <Layout>
           <Component {...pageProps} />

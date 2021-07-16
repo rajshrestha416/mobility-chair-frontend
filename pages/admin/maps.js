@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { Card, Container, Row } from "reactstrap";
 
 // layout for this page
-import Admin from "layouts/Admin.js";
+import Admin from "../../layouts/Admin.js";
 
 const ShowMap = dynamic(() => import("../admin/showMap"), {
   loading: () => <p>Loading Map</p>,

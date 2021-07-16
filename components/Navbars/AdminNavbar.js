@@ -18,6 +18,7 @@ import {
   Media,
 } from "reactstrap";
 import { useRouter } from "next/router";
+import Image from 'next/image'
 
 function AdminNavbar({ brandText }) {
 
@@ -37,7 +38,7 @@ function AdminNavbar({ brandText }) {
               <DropdownToggle className="pr-0" nav>
                 <Media className="align-items-center">
                   <span className="avatar avatar-sm rounded-circle">
-                    <img
+                    <Image
                       alt="..."
                       src="../../assets/img/theme/team-1-800x800.jpg"
                     />
