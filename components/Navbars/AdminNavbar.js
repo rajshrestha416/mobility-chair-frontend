@@ -27,7 +27,7 @@ function AdminNavbar({ brandText }) {
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
         <Container fluid>
-          <Link href="/admin/dashboard">
+          <Link href="/admin/dashboard" passHref>
             <h5 className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
               {brandText}
             </h5>
@@ -38,10 +38,10 @@ function AdminNavbar({ brandText }) {
               <DropdownToggle className="pr-0" nav>
                 <Media className="align-items-center">
                   <span className="avatar avatar-sm rounded-circle">
-                    <Image
+                    {/* <Image
                       alt="..."
-                      src="../../assets/img/theme/team-1-800x800.jpg"
-                    />
+                       src="../../assets/img/theme/team-1-800x800.jpg"
+                   /> */}
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
                     <span className="mb-0 text-sm font-weight-bold">

@@ -8,15 +8,15 @@ import { Card, Container, Row } from "reactstrap";
 // layout for this page
 import Admin from "../../layouts/Admin.js";
 
-const ShowMap = dynamic(() => import("../admin/showMap"), {
-  loading: () => <p>Loading Map</p>,
-  ssr: false,
-});
+// const ShowMap = dynamic(() => import("../admin/showMap"), {
+//   loading: () => <p>Loading Map</p>,
+//   ssr: false,
+// });
 
 function Maps() {
   return (
     <>
-      <UserHeader />
+      {/* <UserHeader />
       {/* Page content */}
       <Container className="mt--7" fluid>
         <Row>
@@ -25,11 +25,11 @@ function Maps() {
             <ShowMap />
           </div>
         </Row>
-      </Container>
+      </Container> */}
     </>
   );
 }
 
-Maps.layout = Admin;
+// Maps.layout = Admin;
 
 export default Maps;

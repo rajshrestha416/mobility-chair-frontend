@@ -100,7 +100,7 @@ function Login() {
                     placeholder="password"
                   />
 
-                  <Link href="/admin/dashboard">
+                  <Link href="/admin/dashboard" passHref>
                     <input
                       type="submit"
                       className="fadeIn fourth"
