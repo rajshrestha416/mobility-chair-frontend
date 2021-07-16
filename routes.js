@@ -23,11 +23,11 @@ var routes = [
   //   icon: "ni ni-planet text-blue",
   //   layout: "/admin",
   // },
-  {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
-    layout: "/admin",
-  },
+  // {
+  //   path: "/maps",
+  //   name: "Maps",
+  //   icon: "ni ni-pin-3 text-orange",
+  //   layout: "/admin",
+  // },
 ];
 export default routes;

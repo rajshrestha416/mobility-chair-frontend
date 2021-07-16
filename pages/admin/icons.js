@@ -12,7 +12,7 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 // layout for this page
-import Admin from "layouts/Admin.js";
+import Admin from "../../layouts/Admin.js";
 // core components
 import UserHeader from "../../components/Headers/UserHeader";
 

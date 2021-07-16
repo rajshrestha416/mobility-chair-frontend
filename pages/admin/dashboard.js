@@ -2,9 +2,9 @@ import React from "react";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
 // javascipt plugin for creating charts
-import Chart from "chart.js";
+// import Chart from "chart.js";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+// import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
 import {
   Button,
@@ -34,17 +34,17 @@ import Header from "../../components/Headers/Header.js";
 
 const Dashboard = (props) => {
   const [activeNav, setActiveNav] = React.useState(1);
-  const [chartExample1Data, setChartExample1Data] = React.useState("data1");
+  // const [chartExample1Data, setChartExample1Data] = React.useState("data1");
 
   // if (window.Chart) {
   //   parseOptions(Chart, chartOptions());
   // }
 
-  const toggleNavs = (e, index) => {
-    e.preventDefault();
-    setActiveNav(index);
-    setChartExample1Data("data" + index);
-  };
+  // const toggleNavs = (e, index) => {
+  //   e.preventDefault();
+  //   setActiveNav(index);
+  //   setChartExample1Data("data" + index);
+  // };
   return (
     <>
       <Header />
@@ -176,13 +176,13 @@ const Dashboard = (props) => {
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">/argon/charts.html</th>
+                    {/* <th scope="row">/argon/charts.html</th>
                     <td>3,513</td>
                     <td>294</td>
                     <td>
                       <i className="fas fa-arrow-down text-warning mr-3" />{" "}
                       36,49%
-                    </td>
+                    </td> */}
                   </tr>
                   <tr>
                     <th scope="row">/argon/tables.html</th>
