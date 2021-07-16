@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 
 import axios from "axios";
-import AddVehicle from "./AddVehicle";
+import AddVehicle from "./addVehicle";
 
 // layout for this page
 import Admin from "../../layouts/Admin.js";
