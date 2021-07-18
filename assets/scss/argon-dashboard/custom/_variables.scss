@@ -169,6 +169,7 @@ $shapes-primary-colors: map-merge((
   "span-5-bg":                  #1fa2ff
 ), $shapes-primary-colors);
 
+
 $shapes-default-colors: () !default;
 $shapes-default-colors: map-merge((
   "step-1-gradient-bg":         #7795f8,
@@ -624,7 +625,7 @@ $custom-control-indicator-disabled-bg:          $gray-200 !default;
 $custom-control-label-disabled-color:           $gray-600 !default;
 
 $custom-checkbox-indicator-border-radius:       $border-radius-sm !default;
-//$custom-checkbox-indicator-icon-checked:        str-replace(url("data:image/svg+xml !default;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$custom-checkbox-indicator-icon-checked:        str-replace(url("data:image/svg+xml !default;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 // Custom toggle
 
@@ -789,7 +790,8 @@ $navbar-light-border-color: $border-color !default;
 // Main content
 
 $main-content-padding-y: 40px !default;
-$main-content-padding-x: 24px !default; // in px to combine with $grid-gutter-width
+$main-content-padding-x: 24px !default; // in px to combine with 
+$grid-gutter-width: 24px;
 
 
 // Alerts
@@ -881,20 +883,20 @@ $badge-circle-size:                 2rem !default;
 
 // Pagination
 
-// $pagination-padding-y:              .5rem !default;
-// $pagination-padding-x:              .75rem !default;
-// $pagination-padding-y-sm:           .25rem !default;
-// $pagination-padding-x-sm:           .5rem !default;
-// $pagination-padding-y-lg:           .75rem !default;
-// $pagination-padding-x-lg:           1.5rem !default;
-// $pagination-line-height:            1.25 !default;
+$pagination-padding-y:              .5rem !default;
+$pagination-padding-x:              .75rem !default;
+$pagination-padding-y-sm:           .25rem !default;
+$pagination-padding-x-sm:           .5rem !default;
+$pagination-padding-y-lg:           .75rem !default;
+$pagination-padding-x-lg:           1.5rem !default;
+$pagination-line-height:            1.25 !default;
 
 $pagination-color:                  $gray-600 !default;
 $pagination-bg:                     $white  !default;
 $pagination-border-width:           $border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
-//$pagination-focus-box-shadow:       $btn-hover-box-shadow !default;
+$pagination-focus-box-shadow:       $btn-hover-box-shadow !default;
 
 $pagination-hover-color:            $gray-600 !default;
 $pagination-hover-bg:               $gray-300 !default;
@@ -923,8 +925,8 @@ $card-bg:                           $white !default;
 
 $card-img-overlay-padding:          1.25rem !default;
 
-//$card-group-margin:                 ($grid-gutter-width / 2);
-//$card-deck-margin:                  $card-group-margin !default;
+$card-group-margin:                 ($grid-gutter-width / 2);
+$card-deck-margin:                  $card-group-margin !default;
 
 $card-columns-count:                3 !default;
 $card-columns-gap:                  1.25rem !default;

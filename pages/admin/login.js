@@ -1,20 +1,5 @@
 import React from "react";
 import Particles from "react-particles-js";
-import logo from "../../assets/img/brand/logo.png";
-
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-
 import Link from "next/link";
 import Image from 'next/image'
 
@@ -77,10 +62,10 @@ function Login() {
               <div id="formContent">
                 <div className="fadeIn first">
                   <Image
-                    src={logo}
-                    id="icon"
+                    id = "icon"
+                    src="/logo.png"
                     alt="User Icon"
-                    style={{ margin: "25px" }}
+                    width="200px" height="100"
                   />
                 </div>
 

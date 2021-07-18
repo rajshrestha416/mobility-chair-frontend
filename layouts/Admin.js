@@ -32,7 +32,6 @@ function Admin(props) {
         routes={routes}
         logo={{
           innerLink: "/admin/dashboard",
-          imgSrc: "../assets/img/brand/logo.png",
           imgAlt: "...",
         }}
       />

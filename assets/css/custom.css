@@ -1,3 +1,4 @@
+
 .detailsTable table.mdb-dataTable thead th,
 table thead.mdb-dataTable-head th {
   font-size: 11px !important;
@@ -284,7 +285,7 @@ input[type="text"]:placeholder {
 }
 
 #icon {
-  width: 60%;
+  
 }
 
 .map {

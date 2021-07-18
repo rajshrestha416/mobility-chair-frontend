@@ -1,13 +1,12 @@
 import React from 'react';
-import '../styles/globals.css'
 import App from "next/app";
 import Head from "next/head";
+// import Script from 'next/script';
+import "../assets/scss/nextjs-argon-dashboard.scss";
+import "../assets/plugins/nucleo/css/nucleo.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../assets/css/custom.css";
-
-import Script from 'next/script';
-// import "assets/plugins/nucleo/css/nucleo.css";
-// import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "assets/scss/nextjs-argon-dashboard.scss";
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   // const { Component, pageProps } = this.props;
@@ -21,10 +20,10 @@ function MyApp({ Component, pageProps }) {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          {/* <link
+          <link
             rel="shortcut icon"
-            href={require("assets/img/brand/favicon.ico")}
-          /> */}
+            href="../assets/img/brand/favicon.ico"
+          />
           <title>Mobility Wheelchair</title>
           {/* <Script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE" async="true"></Script> */}
         </Head>
