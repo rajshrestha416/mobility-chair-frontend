@@ -184,7 +184,6 @@ function User() {
               <div style={{ padding: "20px" }}>
                 <MDBDataTableV5
                   className="detailsTable"
-                  autoWidth ={false}
                   hover
                   scrollX
                   entriesOptions={[5, 10, 15]}

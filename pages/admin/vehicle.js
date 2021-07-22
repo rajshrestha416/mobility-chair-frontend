@@ -95,7 +95,7 @@ function Vehicle() {
       {
         label: "Vehicle Number",
         field: "vehicle_number",
-        width: 100,
+        width: 150,
       }
     ],
     rows: [_rows]
@@ -131,7 +131,6 @@ function Vehicle() {
                 <MDBDataTableV5
                   className="detailsTable"
                   hover
-                  scrollX
                   entriesOptions={[5, 10, 15]}
                   entries={5}
                   pagesAmount={4}
