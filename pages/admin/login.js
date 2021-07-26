@@ -43,6 +43,7 @@ function Login() {
   };
 
   const checkAdmin = (e) => {
+    alert("kkkkkkkk")
     e.preventDefault();
     axios.post("https://mobility-wheelchair-backend.herokuapp.com/api/admin/login", state)
       .then((response) => {
@@ -60,7 +61,6 @@ function Login() {
         alert(err);
       });
   };
-
 
 
   return (
