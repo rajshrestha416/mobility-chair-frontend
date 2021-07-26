@@ -10,17 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 // reactstrap components
 import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
   Collapse,
   DropdownMenu,
   DropdownItem,
-  UncontrolledDropdown,
   DropdownToggle,
-  FormGroup,
+  UncontrolledDropdown,
   Form,
   Input,
   InputGroupAddon,
@@ -32,14 +26,10 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Progress,
-  Table,
   Container,
   Row,
   Col,
 } from "reactstrap";
-
-var ps;
 
 function Sidebar(props) {
   // used for checking current route

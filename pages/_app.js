@@ -22,17 +22,17 @@ function MyApp({ Component, pageProps }) {
           />
           <link
             rel="shortcut icon"
-            href="../assets/img/brand/favicon.ico"
+            href="/favicon.ico"
           />
           <title>Mobility Wheelchair</title>
-          {/* <link
+          <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css"
           />
           <link
             href="https://unpkg.com/leaflet-geosearch@latest/assets/css/leaflet.css"
             rel="stylesheet"
-          /> */}
+          />
         </Head>
         <Layout>
           <Component {...pageProps} />

@@ -180,7 +180,6 @@ function User() {
                   pagesAmount={4}
                   data={dataTable}
                   searchTop
-                  searchBottom={false}
                 />
               </div>
             </Card>
