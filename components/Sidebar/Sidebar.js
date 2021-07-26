@@ -64,7 +64,7 @@ function Sidebar(props) {
         <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
           <Link href={prop.layout + prop.path}>
             <NavLink
-              href="#pablo"
+              href={prop.layout+"/"+prop.path}
               active={activeRoute(prop.layout + prop.path)}
               onClick={closeCollapse}
             >
@@ -78,7 +78,7 @@ function Sidebar(props) {
   };
   const { routes, logo } = props;
   let navbarBrand = (
-    <NavbarBrand href="#pablo" className="pt-0">
+    <NavbarBrand href="/admin/dashboard" className="pt-0">
       <img
         alt={props.logo.imgAlt}
         className="navbar-brand-img"
