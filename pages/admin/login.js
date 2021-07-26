@@ -44,7 +44,7 @@ function Login() {
 
   const checkAdmin = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3001/api/admin/login", state)
+    axios.post("https://mobility-wheelchair-backend.herokuapp.com/api/admin/login", state)
       .then((response) => {
         console.log(response)
         if (response.data.success) {

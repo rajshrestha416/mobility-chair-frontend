@@ -34,7 +34,7 @@ function Vehicle() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/vehicle")
+    axios.get("https://mobility-wheelchair-backend.herokuapp.com/api/vehicle")
       .then(response => {
         setVechile(response.data.vehicles);
       })

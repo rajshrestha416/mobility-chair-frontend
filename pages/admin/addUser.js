@@ -28,7 +28,7 @@ function AddUser({ closeAddUser }) {
   const [vehicles, setVehicles] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/vehicle")
+    axios.get("https://mobility-wheelchair-backend.herokuapp.com/api/vehicle")
       .then(response => {
         setVehicles(response.data.vehicles);
         console.log(vehicles);
@@ -41,7 +41,7 @@ function AddUser({ closeAddUser }) {
 
   const addUser = () => {
     console.log(userdata);
-    axios.post("http://localhost:3001/api/auth/register", userdata)
+    axios.post("https://mobility-wheelchair-backend.herokuapp.com/api/auth/register", userdata)
       .then(response => {
         console.log(response);
         if (response.data.success) {

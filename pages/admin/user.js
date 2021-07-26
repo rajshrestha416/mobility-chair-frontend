@@ -62,7 +62,7 @@ function User() {
 
   useEffect(() => {
     // selectUser;
-    axios('http://localhost:3001/api/auth/all')
+    axios('https://mobility-wheelchair-backend.herokuapp.com/api/auth/all')
       .then(response => {
         console.log({ "user": response.data.user });
         retrieveUser(response.data.user);
