@@ -82,7 +82,7 @@ function Sidebar(props) {
       <img
         alt={props.logo.imgAlt}
         className="navbar-brand-img"
-        src={"../assets/img/brand/apple-icon.png"}
+        src={"/logo.png"}
         style={{ maxHeight: "3.5rem" }}
       />
     </NavbarBrand>

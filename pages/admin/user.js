@@ -28,7 +28,6 @@ import axios from "axios";
 function User() {
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [users, retrieveUser] = React.useState([]);
-  const [datatable, setDatatable] = React.useState({})
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true);
@@ -61,11 +60,6 @@ function User() {
     });
   };
 
-  // const selectUser = async() => {
-  //   await 
-  // }
-
-
   useEffect(() => {
     // selectUser;
     axios('http://localhost:3001/api/auth/all')
@@ -85,7 +79,7 @@ function User() {
     var contact = user.contact;
     var emContact = user.emContact;
     var email = user.email;
-    var date = moment(user.createdAt).format('DD/MM/YYYY')
+    var date = moment(user.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
 
     return {
@@ -146,11 +140,6 @@ function User() {
     ],
     rows: _rows
   };
-
-
-
-
-
 
   return (
     <>
@@ -218,24 +207,7 @@ function User() {
                 }}
                 className="addUser"
               >
-                <AddUser />
-                <div className="d-flex justify-content-center">
-                  <Button
-                    className="btn btn-success"
-                    // onClick={setModalIsOpenToFalse}
-                    style={{ margin: "10px" }}
-                    onClick={addUser}
-                  >
-                    Add
-                  </Button>
-                  <Button
-                    className="btn btn-danger"
-                    onClick={setModalIsOpenToFalse}
-                    style={{ margin: "10px" }}
-                  >
-                    Cancel
-                  </Button>
-                </div>
+                <AddUser closeAddUser={setModalIsOpenToFalse} />
               </Modal>
             </div>
           </div>

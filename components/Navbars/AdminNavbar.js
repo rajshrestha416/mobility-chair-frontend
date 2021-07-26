@@ -6,12 +6,6 @@ import {
   DropdownItem,
   UncontrolledDropdown,
   DropdownToggle,
-  Form,
-  FormGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Input,
-  InputGroup,
   Navbar,
   Nav,
   Container,
@@ -40,7 +34,8 @@ function AdminNavbar({ brandText }) {
                   <span className="avatar avatar-sm rounded-circle">
                     {/* <Image
                       alt="..."
-                       src="../../assets/img/theme/team-1-800x800.jpg"
+                       src="/logo.png"
+                       width="200px" height="100px"
                    /> */}
                   </span>
                   <Media className="ml-2 d-none d-lg-block">

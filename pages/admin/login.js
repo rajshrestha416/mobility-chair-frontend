@@ -121,7 +121,7 @@ function Login() {
                     id = "icon"
                     src="/logo.png"
                     alt="User Icon"
-                    width="200px" height="100"
+                    width="200px" height="100px"
                   />
                 </div>
 

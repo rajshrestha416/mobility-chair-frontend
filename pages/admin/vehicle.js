@@ -21,10 +21,9 @@ import AddVehicle from "./addVehicle";
 import Admin from "../../layouts/Admin.js";
 // core components
 import UserHeader from "../../components/Headers/UserHeader";
-import { Button } from "react-bootstrap";
 
 function Vehicle() {
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [Vehicle, setVechile] = React.useState([]);
 
   const setModalIsOpenToTrue = () => {
@@ -33,53 +32,38 @@ function Vehicle() {
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
   };
-  const addVehicle = () => {
-    toast.success("Added Successfully", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-  const addFailed = () => {
-    toast.error("Failed to Add", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
 
   useEffect(() => {
-    // selectUser;
-    axios('http://localhost:3001/api/vehicle/60d2a7370cb06b0b2416e66e')
+    axios.get("http://localhost:3001/api/vehicle")
       .then(response => {
-        // console.log({ "vehicle": response.data.c});
-        setVechile(response.data.vehicle);
+        setVechile(response.data.vehicles);
       })
       .catch(err => {
         alert("Cannot retrieve vehicle");
       });
   }, []);
 
-  var _rows = 
-  // Vehicle.map(vehicle => 
-    {
-    // var vehicle_type = vehicle.vehicle_type;
-    // var vehicle_number = vehicle.vehicle_number;
-
-    // return {
-      'vehicle_type': Vehicle.vehicle_type,
-      'vehicle_number': Vehicle.vehicle_number,
-    };
-  // }
-  // );
+  var _rows =
+    Vehicle.map(vehicle => {
+      // console.log("veeee", vehicle)
+      var vehicle_type = vehicle.vehicle_type;
+      var vehicle_number = vehicle.vehicle_number;
+      var action = <div>
+        <button>
+          edit
+        </button>
+        <button>
+          
+        </button>
+      </div>;
+      console.log("veee", vehicle_type);
+      return {
+        'vehicle_type': vehicle_type,
+        'vehicle_number': vehicle_number,
+        'action': action
+      };
+    }
+    );
 
   const dataTable = {
     columns: [
@@ -96,9 +80,14 @@ function Vehicle() {
         label: "Vehicle Number",
         field: "vehicle_number",
         width: 150,
+      },
+      {
+        label: "Action",
+        field: "action",
+        width: 200
       }
     ],
-    rows: [_rows]
+    rows: _rows
   };
 
   return (
@@ -163,30 +152,13 @@ function Vehicle() {
                 }}
                 className="addVehicle"
               >
-                <AddVehicle />
-                <div className="d-flex justify-content-center">
-                  <Button
-                    className="btn btn-success"
-                    // onClick={setModalIsOpenToFalse}
-                    style={{ margin: "10px" }}
-                    onClick={addVehicle}
-                  >
-                    Add
-                  </Button>
-                  <Button
-                    className="btn btn-danger"
-                    onClick={setModalIsOpenToFalse}
-                    style={{ margin: "10px" }}
-                  >
-                    Cancel
-                  </Button>
-                </div>
+                <AddVehicle closeAddVehicleModal={setModalIsOpenToFalse} />
               </Modal>
             </div>
           </div>
         </Row>
       </Container>
-      <ToastContainer />
+      <ToastContainer />s
     </>
   );
 }
