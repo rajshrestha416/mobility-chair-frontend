@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { MDBDataTableV5 } from 'mdbreact';
-import moment from 'moment'
+import moment from 'moment';
 
 import Modal from "react-modal";
 
@@ -20,7 +20,6 @@ import Admin from "../../layouts/Admin.js";
 // import add user
 import AddUser from "./addUser";
 
-import { Button } from "react-bootstrap";
 // core components
 import UserHeader from "../../components/Headers/UserHeader";
 import axios from "axios";
@@ -62,7 +61,7 @@ function User() {
 
   useEffect(() => {
     // selectUser;
-    axios('https://mobility-wheelchair-backend.herokuapp.com/api/auth/all')
+    axios('http://localhost:3001/api/auth/all')
       .then(response => {
         console.log({ "user": response.data.user });
         retrieveUser(response.data.user);
@@ -70,7 +69,7 @@ function User() {
       .catch(err => {
         alert("Cannot retrieve user");
       });
-  },[]);
+  }, [users]);
 
   var _rows = users.map(user => {
     var name = user.fullname;

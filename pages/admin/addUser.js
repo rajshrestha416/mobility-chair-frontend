@@ -11,15 +11,17 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { useRouter } from 'next/router';
 
 function AddUser({ closeAddUser }) {
+
   const [userdata, setUserData] = useState({
     "fullname": "",
     "age": "",
     "address": "",
     "email": "",
     "contact": "",
-    "vehicle" : "",
+    "vehicle": "",
     "emContact": "",
     "password": "",
     "cpassword": ""
@@ -28,24 +30,22 @@ function AddUser({ closeAddUser }) {
   const [vehicles, setVehicles] = useState([]);
 
   useEffect(() => {
-    axios.get("https://mobility-wheelchair-backend.herokuapp.com/api/vehicle")
+    axios.get("http://localhost:3001/api/vehicle")
       .then(response => {
         setVehicles(response.data.vehicles);
-        console.log(vehicles);
       })
       .catch(err => {
-        // addFailed();
         console.log(vehicles);
       });
-  });
+  }, []);
 
   const addUser = () => {
     console.log(userdata);
-    axios.post("https://mobility-wheelchair-backend.herokuapp.com/api/auth/register", userdata)
+    axios.post("http://localhost:3001/api/auth/register", userdata)
       .then(response => {
-        console.log(response);
         if (response.data.success) {
           addSuccess();
+          closeAddUser();
         }
         else {
           addFailed();
@@ -288,20 +288,15 @@ function AddUser({ closeAddUser }) {
                       >
                         Vehicle:
                       </label>
-                      <select className="w-100 dropdown-toggle btn btn-light"
-                        name= "vehicle"
-                        onChange={changeHandler}
-                      >
+                      <select className="form-control col-sm-9" name="vehicle" onChange={changeHandler}>
                         <option value="">
-                              Select Vehicle .... 
-                            </option>
+                          Select Vehicle ....
+                        </option>
                         {vehicles.map(data => {
                           return <option value={data._id}>
-                            {data.vehicle_type}
+                            {data.vehicle_number}
                           </option>;
                         })}
-
-                        
                       </select>
                     </FormGroup>
                   </div>
