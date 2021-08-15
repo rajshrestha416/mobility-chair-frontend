@@ -78,7 +78,6 @@ function Vehicle() {
 
   var _rows =
     Vehicle.map(vehicle => {
-      // console.log("veeee", vehicle)
       var vehicle_type = vehicle.vehicle_type;
       var vehicle_number = vehicle.vehicle_number;
       var action = <div className="justify-content-start text-start">

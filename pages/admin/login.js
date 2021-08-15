@@ -47,7 +47,6 @@ function Login() {
     e.preventDefault();
     axios.post("https://mobility-wheelchair-backend.herokuapp.com/api/admin/login", state)
       .then((response) => {
-        console.log(response)
         if (response.data.success) {
           loginSuccess()
           router.push('/admin/dashboard');

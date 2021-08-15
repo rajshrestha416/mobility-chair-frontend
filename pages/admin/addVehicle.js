@@ -21,7 +21,6 @@ function AddVehicle({ closeAddVehicleModal }) {
   });
 
   const addVehicle = () => {
-    console.log(vehicleData);
     axios.post("https://mobility-wheelchair-backend.herokuapp.com/api/vehicle", vehicleData)
       .then(response => {
         if (response.data.success) {

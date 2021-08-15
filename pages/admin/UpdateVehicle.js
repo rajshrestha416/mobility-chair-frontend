@@ -35,14 +35,8 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
     }, []);
 
     const updateVehicle = () => {
-        // const data = {
-        //     vehicle_number : vehicleData.vehicle_number,
-        //     vehicle_type : vehicleData.vehicle_type,
-        // }
-        console.log(vehicleData)
         axios.put("http://localhost:3001/api/vehicle/"+id, vehicleData)
             .then(response => {
-                console.log(response)
                 if (response.data.success) {
                     closeUpdateVehicleModal();
                     addSuccess();
@@ -53,7 +47,6 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
             })
             .catch(err => {
                 addFailed();
-                console.log(err)
             });
     };
 

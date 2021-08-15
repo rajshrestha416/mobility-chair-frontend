@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useRouter } from 'next/router';
 
-function AddUser({ closeAddUser }) {
+function AddUser({ closeAddUser }) { 
 
   const [userdata, setUserData] = useState({
     "fullname": "",
@@ -35,12 +35,10 @@ function AddUser({ closeAddUser }) {
         setVehicles(response.data.vehicles);
       })
       .catch(err => {
-        console.log(vehicles);
       });
   }, []);
 
   const addUser = () => {
-    console.log(userdata);
     axios.post("http://localhost:3001/api/auth/register", userdata)
       .then(response => {
         if (response.data.success) {
@@ -92,9 +90,9 @@ function AddUser({ closeAddUser }) {
     <>
       <div style={{ display: "block" }}>
         <div style={{ overflowY: "initial" }}>
-          <div>
+          {/* <div>
             <h1 className="text-center">Add User</h1>
-          </div>
+          </div> */}
           <div
             className="pl-lg-4"
             style={{

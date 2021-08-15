@@ -1,316 +1,208 @@
-import React from "react";
-// node.js library that concatenates classes (strings)
-import classnames from "classnames";
-// javascipt plugin for creating charts
-// import Chart from "chart.js";
-// react plugin used to create charts
-// import { Line, Bar } from "react-chartjs-2";
+import React, { useState, useEffect } from "react";
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
-  NavItem,
-  NavLink,
-  Nav,
-  Progress,
-  Table,
   Container,
   Row,
   Col,
 } from "reactstrap";
 // layout for this page
+import Select from "react-select";
+
+import NoSSR from "react-no-ssr";
+
+import dynamic from "next/dynamic";
+
+const Chart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
+
 import Admin from "../../layouts/Admin.js";
-// core components
-// import {
-//   chartOptions,
-//   parseOptions,
-//   chartExample1,
-//   chartExample2,
-// } from "../../variables/charts.js";
-
 import Header from "../../components/Headers/Header.js";
+import axios from "axios";
 
-const Dashboard = (props) => {
-  const [activeNav, setActiveNav] = React.useState(1);
-  // const [chartExample1Data, setChartExample1Data] = React.useState("data1");
+const Dashboard = () => {
 
-  // if (window.Chart) {
-  //   parseOptions(Chart, chartOptions());
-  // }
+  const [users, setUsers] = useState([]);
+  // const [activity, setActivity] = useState([]);
+  const [userId, setUserId] = useState([]);
+  const [selectedUser, setSelectedUser] = useState([]);
+  const [categories, setCategories] = useState([0]);
+  const [data, setData] = useState([0]);
 
-  // const toggleNavs = (e, index) => {
-  //   e.preventDefault();
-  //   setActiveNav(index);
-  //   setChartExample1Data("data" + index);
-  // };
+  // var userId;
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/auth/all')
+      .then(response => {
+        setUsers(response.data.user);
+      })
+      .catch(err => {
+        console.log("Cannot retrieve user");
+      });
+  }, []);
+
+  const getData = async () => {
+    // alert(userId);
+    await axios.get('http://localhost:3001/api/activity/user/' + userId)
+      .then(response => {
+        setSelectedUser(response.data);
+
+        // console.log("id", id);
+        // console.log(data);
+      })
+      .catch(err => {
+        alert("Cannot retrieve user");
+      });
+  };
+
+  useEffect(() => {
+    console.log("Selected user after set",selectedUser)
+    if (selectedUser !==undefined) {
+      console.log("Selected Users",selectedUser);
+      if(selectedUser.activity !== undefined){
+        console.log("Inside first")
+        if(selectedUser.activity.data !== undefined && selectedUser.activity.category !==undefined){
+          console.log("Inside ssecond")
+          setData(selectedUser.activity.data);
+          setCategories(selectedUser.activity.category);
+        }
+        
+      }   
+    }
+  }, [selectedUser]);
+
+  useEffect(()=>{
+    console.log("select data", data)
+    console.log("select options", categories)
+    if(data!== undefined && categories !== undefined){
+      console.log("select data", data)
+      console.log("select options", categories)
+      setSeries(seriesFun()) 
+      setOption(optionFun())
+    }
+  }, [data, categories])
+  const customerOption = users.map(user => {
+    return { value: user, label: user.fullname };
+  });
+
+  const seriesFun = () => {
+    return [
+      {
+        // name: "series-1",
+        type: "line",
+        // data: data,
+        data: data === undefined ? [0] : data,
+      },
+      {
+        name: "Total Distance",
+        type: "column",
+        data: data,
+        data: data === undefined ? [0] : data,
+      }
+    ];
+  };
+
+
+
+  const optionFun = () => {
+    return {
+      chart: {
+        id: "basic-bar",
+        toolbar: {
+          show: false,
+        },
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: "50%",
+        },
+      },
+      stroke: {
+        width: [4, 0, 0],
+      },
+      xaxis: {
+        // type: 'dateTime',
+        categories: (categories === undefined ? [0] : categories),
+        // categories: [0],
+      },
+      markers: {
+        size: 6,
+        strokeWidth: 3,
+        fillOpacity: 0,
+        strokeOpacity: 0,
+        hover: {
+          size: 8,
+        },
+      },
+      yaxis: {
+        tickAmount: 5,
+        min: 0,
+        max: Math.max(...data) + 20,
+      },
+      legend: {
+        show: false
+      },
+    };
+  };
+
+  const [series, setSeries] = useState(
+    seriesFun
+  );
+
+  const [option, setOption] = useState(
+    optionFun
+  );
+
+  const changeUserId = (e) => {
+    setUserId(e.value._id);
+  };
+
+  useEffect(() => {
+    console.log(userId)
+    getData();
+  }, [userId]);
+  useEffect(() => {
+    optionFun();
+    seriesFun();
+  }, [userId]);
   return (
     <>
       <Header />
       {/* Page content */}
       <Container className="mt--7" fluid>
         <Row>
-          <Col className="mb-5 mb-xl-0" xl="8">
+          <Col className="mb-5 mb-xl-0" xl="12">
             <Card className="shadow">
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className="text-uppercase text-light ls-1 mb-1">
-                      Overview
-                    </h6>
-                    <h2 className="text-white mb-0">Sales value</h2>
-                  </div>
-                  <div className="col">
-                    <Nav className="justify-content-end" pills>
-                      <NavItem>
-                        <NavLink
-                          className={classnames("py-2 px-3", {
-                            active: activeNav === 1,
-                          })}
-                          href="#pablo"
-                          onClick={(e) => toggleNavs(e, 1)}
-                        >
-                          <span className="d-none d-md-block">Month</span>
-                          <span className="d-md-none">M</span>
-                        </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink
-                          className={classnames("py-2 px-3", {
-                            active: activeNav === 2,
-                          })}
-                          data-toggle="tab"
-                          href="#pablo"
-                          onClick={(e) => toggleNavs(e, 2)}
-                        >
-                          <span className="d-none d-md-block">Week</span>
-                          <span className="d-md-none">W</span>
-                        </NavLink>
-                      </NavItem>
-                    </Nav>
+                  <div className="col-sm-6">
+                    <NoSSR>
+                      <Select
+                        value={customerOption.find(obj => obj.value._id === userId)} // set selected value
+                        // onChange={handleChange} // assign onChange function
+                        options={customerOption} onChange={changeUserId} />
+                    </NoSSR>
                   </div>
                 </Row>
               </CardHeader>
               <CardBody>
                 {/* Chart */}
-                <div className="chart">
-                  {/* <Line
-                    data={chartExample1[chartExample1Data]}
-                    options={chartExample1.options}
-                    getDatasetAtEvent={(e) => console.log(e)}
-                  /> */}
+                <div id="mixedChart">
+                  <Row>
+                    <Chart
+                      className="col-sm-12 scroll-x"
+                      options={option}
+                      series={series}
+
+                      type="bar"
+                      height={350}
+                    />
+                  </Row>
                 </div>
               </CardBody>
-            </Card>
-          </Col>
-          <Col xl="4">
-            <Card className="shadow">
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className="text-uppercase text-muted ls-1 mb-1">
-                      Performance
-                    </h6>
-                    <h2 className="mb-0">Total orders</h2>
-                  </div>
-                </Row>
-              </CardHeader>
-              <CardBody>
-                {/* Chart */}
-                <div className="chart">
-                  {/* <Bar
-                    data={chartExample2.data}
-                    options={chartExample2.options}
-                  /> */}
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-        <Row className="mt-5">
-          <Col className="mb-5 mb-xl-0" xl="8">
-            <Card className="shadow">
-              <CardHeader className="border-0">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h3 className="mb-0">Page visits</h3>
-                  </div>
-                  <div className="col text-right">
-                    <Button
-                      color="primary"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      See all
-                    </Button>
-                  </div>
-                </Row>
-              </CardHeader>
-              <Table className="align-items-center table-flush" responsive>
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">Page name</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col">Unique users</th>
-                    <th scope="col">Bounce rate</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">/argon/</th>
-                    <td>4,569</td>
-                    <td>340</td>
-                    <td>
-                      <i className="fas fa-arrow-up text-success mr-3" /> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">/argon/index.html</th>
-                    <td>3,985</td>
-                    <td>319</td>
-                    <td>
-                      <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                      46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    {/* <th scope="row">/argon/charts.html</th>
-                    <td>3,513</td>
-                    <td>294</td>
-                    <td>
-                      <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                      36,49%
-                    </td> */}
-                  </tr>
-                  <tr>
-                    <th scope="row">/argon/tables.html</th>
-                    <td>2,050</td>
-                    <td>147</td>
-                    <td>
-                      <i className="fas fa-arrow-up text-success mr-3" /> 50,87%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">/argon/profile.html</th>
-                    <td>1,795</td>
-                    <td>190</td>
-                    <td>
-                      <i className="fas fa-arrow-down text-danger mr-3" />{" "}
-                      46,53%
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Card>
-          </Col>
-          <Col xl="4">
-            <Card className="shadow">
-              <CardHeader className="border-0">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h3 className="mb-0">Social traffic</h3>
-                  </div>
-                  <div className="col text-right">
-                    <Button
-                      color="primary"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      See all
-                    </Button>
-                  </div>
-                </Row>
-              </CardHeader>
-              <Table className="align-items-center table-flush" responsive>
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">Referral</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col" />
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Facebook</th>
-                    <td>1,480</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">60%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="60"
-                            barClassName="bg-gradient-danger"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Facebook</th>
-                    <td>5,480</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">70%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="70"
-                            barClassName="bg-gradient-success"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Google</th>
-                    <td>4,807</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">80%</span>
-                        <div>
-                          <Progress max="100" value="80" />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Instagram</th>
-                    <td>3,678</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">75%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="75"
-                            barClassName="bg-gradient-info"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">twitter</th>
-                    <td>2,645</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">30%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="30"
-                            barClassName="bg-gradient-warning"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
             </Card>
           </Col>
         </Row>

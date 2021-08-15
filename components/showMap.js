@@ -8,6 +8,7 @@ import axios from "axios";
 import Avatar from "react-avatar";
 import { Card } from "react-bootstrap";
 import moment from "moment";
+// import mdbautocomplete
 
 function ShowMap() {
   const [trackers, setTrackers] = useState([]);
@@ -31,13 +32,10 @@ function ShowMap() {
       map.setView(center);
   }, [center]);
 
-  // const position = ();
-
   const searchUser = (text) => {
     let matchedTracker = [];
     trackers.map(tracker => {
       const regex = new RegExp(text, "gi");
-      // console.log(tracker.user.fullname.match(regex))
       if (tracker.user.fullname.match(regex) !== null && text !== "") {
         return (
           matchedTracker.push(tracker)
@@ -45,7 +43,6 @@ function ShowMap() {
       }
     });
     setSearchTracker(matchedTracker);
-    console.log(searchTracker);
   };
 
   const setCenter = (data) => {
@@ -56,21 +53,19 @@ function ShowMap() {
 
   return (
     <>
-      <div className="col-md-4 mapSearch">
+      <div className="mapSearch">
         <div className="input-group">
-          <input type="search" className="form-control" placeholder="Search User" onChange={(e) => searchUser(e.target.value)} />
+          <input type="search" className="searchBox form-control" placeholder="Search User" onChange={(e) => searchUser(e.target.value)} />
         </div>
-        <div className="searchContents">
+        <div className=" searchContents">
           {
             searchTracker.length > 0 ?
               <Card>
                 {searchTracker.map(data => {
-                  return <button>
-                    <p className="search-content" onClick={() => setCenter(data)}>
-                      <strong>{data.user.fullname}</strong> <br />
-                      {data.user.vehicle.vehicle_number}
+                  return <p className="search-content" onClick={() => setCenter(data)} >
+                      <strong>Name: {data.user.fullname}</strong> <br />
+                      Vehilce Number: {data.user.vehicle.vehicle_number}
                     </p>
-                  </button>;
                 })}
               </Card>
               :
