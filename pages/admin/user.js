@@ -237,34 +237,25 @@ function User() {
               </div>
             </Card>
             {/* Modal for add User */}
-            <div className="addUser">
+            <div className="AddUser">
               <Modal
-                isOpen={modalIsOpen}
+                show={modalIsOpen}
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
+                onHide={setModalIsOpenToFalse}
                 style={{
                   overlay: {
                     justifyContent: "center",
                     display: "flex",
-                  },
-                  content: {
-                    width: "50%",
-                    minHeight: "25%",
-                    margin: "auto",
-                    backgroundColor: "white",
-                    boxShadow: "5px 4px 20px 20px #0000000f",
-                    padding: "20px",
-                    position: "relative",
-                  },
+                  }
                 }}
-                className="addUser"
               >
                 <Modal.Header closeButton >
                   <div className="w-100">
                     <h1 className="text-center">Add User</h1>
                   </div>
                 </Modal.Header>
-                <AddUser closeAddUser={setModalIsOpenToFalse} />
+                 <AddUser closeAddUser={setModalIsOpenToFalse} />
               </Modal>
             </div>
 
@@ -284,7 +275,7 @@ function User() {
               >
                 <Modal.Header closeButton >
                   <div className="w-100">
-                    <h1 className="text-center">Update Vehicle</h1>
+                    <h1 className="text-center">Update User</h1>
                   </div>
                 </Modal.Header>
                 <UpdateUser closeUpdateUserModal={setUpdateModalClose} id={userId} />

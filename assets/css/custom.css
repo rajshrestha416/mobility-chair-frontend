@@ -294,9 +294,15 @@ input[type="text"]:placeholder {
 }
 
 .map {
+  position: relative;
+  z-index: 0;
   height: 70vh;
   border-radius: 10px;
   box-shadow: 3px 3px 3px 3px rgb(206 209 222 / 50%);
+}
+
+.map-search{
+  width: 30%;
 }
 
 .mapSearch {
@@ -309,6 +315,13 @@ input[type="text"]:placeholder {
   width: 350px;
   font-weight: 700;
 }
+
+.searchContents2{
+  position: absolute !important;
+  z-index: 99999;
+  overflow-y: auto;
+  max-height: 400px;
+} 
 
 .searchContents{
   width: 350px;

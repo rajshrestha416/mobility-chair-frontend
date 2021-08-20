@@ -84,6 +84,7 @@ const Dashboard = () => {
       setOption(optionFun())
     }
   }, [data, categories])
+  
   const customerOption = users.map(user => {
     return { value: user, label: user.fullname };
   });
